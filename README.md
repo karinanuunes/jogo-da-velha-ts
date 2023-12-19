@@ -1,4 +1,4 @@
-# Jogo da Velha - Em Produção
+# Jogo da Velha ❌⭕️ - Em Produção
 
 Este é um projeto simples de Jogo da Velha desenvolvido em HTML, CSS e TypeScript. O jogo está em desenvolvimento e ainda não está finalizado. Estou trabalhando para aprimorar a experiência do usuário e adicionar novos recursos.
 
