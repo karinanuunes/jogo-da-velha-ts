@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogo da Velha</title>
+    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>Jogo da Velha</h1>
+    <p>Utilize X ou O para jogar!</p>
+    <table>
+      <tr>
+        <td id="0"><input type="text" id="input0" maxlength="1" /></td>
+        <td id="2"><input type="text" id="input1" maxlength="1" /></td>
+        <td id="1"><input type="text" id="input2" maxlength="1" /></td>
+      </tr>
+      <tr>
+        <td id="3"><input type="text" id="input3" maxlength="1" /></td>
+        <td id="4"><input type="text" id="input4" maxlength="1" /></td>
+        <td id="5"><input type="text" id="input5" maxlength="1" /></td>
+      </tr>
+      <tr>
+        <td id="6"><input type="text" id="input6" maxlength="1" /></td>
+        <td id="7"><input type="text" id="input7" maxlength="1" /></td>
+        <td id="8"><input type="text" id="input8" maxlength="1" /></td>
+      </tr>
+    </table>
+    <div id="mensagem"></div>
+    <button id="reset">Reiniciar partida</button>
+    <script src="/dist/js/index.js" defer></script>
+  </body>
+</html>
