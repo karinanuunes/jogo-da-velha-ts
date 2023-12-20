@@ -8,9 +8,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 3em;
+  margin-top: 2.4em;
 
-  background-color: rgb(235, 235, 235);
+  background-color: #ececec;
   font-family: "Heebo", sans-serif;
 }
 
@@ -26,13 +26,9 @@ input {
   width: 160px;
   height: 160px;
   border: none;
-  background-color: white;
+  background-color: #fff;
   font-size: 48px;
   text-align: center;
-}
-
-input:focus {
-  border: none;
 }
 
 #mensagem {
@@ -48,5 +44,5 @@ button {
   border: none;
 
   color: white;
-  background-color: rgb(134, 134, 134);
+  background-color: #949494;
 }
