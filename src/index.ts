@@ -19,9 +19,19 @@ function verificarVitoria(casas: Array<string>): boolean {
   );
   if (vitoria) {
     mostrarMensagem(`Parabéns, Jogador ${currentPlayer} venceu!`, true);
-    setTimeout(() => {
-      reiniciarJogo();
-    }, 3000);
+    // setTimeout(() => {
+    //   reiniciarJogo();
+    // }, 3000);
+
+    for (let i = 0; i < 9; i++) {
+      const inputElement = document.getElementById(
+        `input${i}`
+      ) as HTMLInputElement | null;
+
+      if (inputElement) {
+        inputElement.classList.add("win");
+      }
+    }
   }
   return vitoria;
 }
@@ -35,6 +45,7 @@ function reiniciarJogo(): void {
 
     if (inputElement) {
       inputElement.value = "";
+      inputElement.classList.remove("win");
     }
   }
 }

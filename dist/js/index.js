@@ -13,7 +13,20 @@ const sequenciaVitoria = [
 let currentPlayer;
 // Verificar se a sequência esta correta para vitória
 function verificarVitoria(casas) {
-    return sequenciaVitoria.some((casasCorretas) => casasCorretas.every((casa) => casas[casa] === currentPlayer));
+    const vitoria = sequenciaVitoria.some((casasCorretas) => casasCorretas.every((casa) => casas[casa] === currentPlayer));
+    if (vitoria) {
+        mostrarMensagem(`Parabéns, Jogador ${currentPlayer} venceu!`, true);
+        // setTimeout(() => {
+        //   reiniciarJogo();
+        // }, 3000);
+        for (let i = 0; i < 9; i++) {
+            const inputElement = document.getElementById(`input${i}`);
+            if (inputElement) {
+                inputElement.classList.add("win");
+            }
+        }
+    }
+    return vitoria;
 }
 // Reiniciar o jogo
 function reiniciarJogo() {
@@ -21,16 +34,21 @@ function reiniciarJogo() {
         const inputElement = document.getElementById(`input${i}`);
         if (inputElement) {
             inputElement.value = "";
+            inputElement.classList.remove("win");
         }
     }
-    // currentPlayer = "X" || "O";
-    // mostrarMensagem("Jogo reiniciado");
 }
 // Mensagem da vitória do jogador
-function mostrarMensagem(mensagem) {
+function mostrarMensagem(mensagem, seGanha) {
     const mensagemElement = document.getElementById("mensagem");
     if (mensagemElement) {
         mensagemElement.innerText = mensagem;
+        if (seGanha) {
+            mensagemElement.classList.add(".win");
+        }
+        else {
+            mensagemElement.classList.remove(".win");
+        }
     }
 }
 document.getElementById("reset")?.addEventListener("click", reiniciarJogo);
@@ -44,13 +62,8 @@ for (let i = 0; i < 9; i++) {
                 const inputValue = document.getElementById(`input${j}`)?.value;
                 valores.push(inputValue);
             }
-            if (verificarVitoria(valores)) {
-                mostrarMensagem(`Parabéns, Jogador ${currentPlayer} venceu!`);
-                reiniciarJogo();
-            }
-            else {
-                currentPlayer = currentPlayer === "X" ? "O" : "X";
-            }
+            verificarVitoria(valores);
+            currentPlayer = currentPlayer === "X" ? "O" : "X";
         });
     }
 }
