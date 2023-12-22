@@ -14,9 +14,16 @@ let currentPlayer: "X" | "O";
 
 // Verificar se a sequência esta correta para vitória
 function verificarVitoria(casas: Array<string>): boolean {
-  return sequenciaVitoria.some((casasCorretas) =>
+  const vitoria = sequenciaVitoria.some((casasCorretas) =>
     casasCorretas.every((casa) => casas[casa as number] === currentPlayer)
   );
+  if (vitoria) {
+    mostrarMensagem(`Parabéns, Jogador ${currentPlayer} venceu!`, true);
+    setTimeout(() => {
+      reiniciarJogo();
+    }, 3000);
+  }
+  return vitoria;
 }
 
 // Reiniciar o jogo
@@ -30,18 +37,21 @@ function reiniciarJogo(): void {
       inputElement.value = "";
     }
   }
-  // currentPlayer = "X" || "O";
-  // mostrarMensagem("Jogo reiniciado");
 }
 
 // Mensagem da vitória do jogador
-function mostrarMensagem(mensagem: string): void {
+function mostrarMensagem(mensagem: string, seGanha: boolean): void {
   const mensagemElement = document.getElementById(
     "mensagem"
   ) as HTMLDivElement | null;
 
   if (mensagemElement) {
     mensagemElement.innerText = mensagem;
+    if (seGanha) {
+      mensagemElement.classList.add(".win");
+    } else {
+      mensagemElement.classList.remove(".win");
+    }
   }
 }
 
@@ -63,12 +73,8 @@ for (let i = 0; i < 9; i++) {
         valores.push(inputValue);
       }
 
-      if (verificarVitoria(valores)) {
-        mostrarMensagem(`Parabéns, Jogador ${currentPlayer} venceu!`);
-        reiniciarJogo();
-      } else {
-        currentPlayer = currentPlayer === "X" ? "O" : "X";
-      }
+      verificarVitoria(valores);
+      currentPlayer = currentPlayer === "X" ? "O" : "X";
     });
   }
 }

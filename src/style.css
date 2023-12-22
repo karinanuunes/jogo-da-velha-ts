@@ -46,3 +46,7 @@ button {
   color: white;
   background-color: #949494;
 }
+
+.win {
+  background-color: green;
+}
